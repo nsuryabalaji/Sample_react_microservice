@@ -13,7 +13,15 @@ function operations_fun {
 		docker cp ./inittables.sql mysql:/
 		sleep 30
 		docker exec mysql /bin/sh -c "mysql -u root -ppassword </inittables.sql"
+		if [[ "$mode" = "prod" ]]
+		then
+		docker restart auth_container_prod
+		elif [[ "$mode" = "dev" ]]
+		then
 		docker restart auth_container_dev
+		else
+		echo "Neither Prod or Dev Restarted"
+		fi
                 echo "waiting for services"
                 sleep 30
 	elif [[ "$operation" = "down" ]]
