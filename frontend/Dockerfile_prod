@@ -1,8 +1,8 @@
 FROM node:latest
 RUN apt-get install -y git
 WORKDIR "/root"
-RUN git clone https://github.com/DIYDevOps/Sample_react_microservice.git
-WORKDIR "/root/Sample_react_microservice/frontend/web"
+RUN git clone https://github.com/nsuryabalaji/Sample_react_microservice_org.git
+WORKDIR "/root/Sample_react_microservice_org/frontend/web"
 EXPOSE 8081
 RUN npm install
 ENTRYPOINT ["npm", "start"]
